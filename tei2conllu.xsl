@@ -8,8 +8,7 @@
 
 <xsl:stylesheet version="1.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:tei="http://www.tei-c.org/ns/1.0"
-                xmlns:tex="http://www.tei-c.org/ns/Examples">
+                xmlns:tei="http://www.tei-c.org/ns/1.0">
 
 <xsl:output method="text"
             encoding="UTF-8"/>
