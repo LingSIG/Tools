@@ -31,9 +31,19 @@
 <xsl:template match="*[*[@depN]]" mode="conllu">
   <!-- ensure that each child has @depN and @depR, @depE, or @type="surface" attributes -->
   <xsl:if test="not(*[not(@depN and (@depR or @depE or @type='surface'))])">
-    <xsl:text># send_id = </xsl:text>
-    <xsl:number count="*[*[@depN]]"
-                level="any"/>
+    <xsl:variable name="id">
+      <xsl:choose>
+        <xsl:when test="@id">
+          <xsl:value-of select="@id"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:number count="*[*[@depN]]"
+                      level="any"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:text># sent_id = </xsl:text>
+    <xsl:value-of select="$id"/>
     <xsl:text>&#xA;</xsl:text>
     <xsl:text># text = </xsl:text>
     <xsl:apply-templates mode="conllu-text"/>
